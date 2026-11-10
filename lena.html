@@ -1,0 +1,1285 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#4169E1">
+<meta name="description" content="Feliz Aniversário, Lena — 17 anos">
+<title>Feliz Aniversário, Lena — 17 anos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+/* ==========================================================
+   1. VARIÁVEIS / RESET
+   ========================================================== */
+:root{
+  --royal:#4169E1;
+  --gold:#FFD700;
+  --blush:#FFC0CB;
+  --plum:#6B2D5C;
+  --sage:#87A96B;
+  --white:#FFFFFF;
+  --ink:#2A1030;
+  --night:#0f1a5e;
+  --muted:#5b4560;
+  --glass:rgba(255,255,255,.66);
+  --glass-border:rgba(255,255,255,.75);
+  --shadow:0 10px 30px rgba(107,45,92,.18);
+  --shadow-lg:0 20px 50px rgba(15,26,94,.28);
+  --font-title:'Great Vibes','Brush Script MT',cursive;
+  --font-text:'Poppins',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+  --radius:22px;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+html.modal-open,html.modal-open body{overflow:hidden}
+body{
+  margin:0;font-family:var(--font-text);font-size:1rem;line-height:1.65;color:var(--ink);
+  background:#fff;overflow-x:clip;-webkit-font-smoothing:antialiased;
+}
+img,svg{max-width:100%}
+ul,ol{margin:0;padding:0;list-style:none}
+h1,h2,h3,h4,p,blockquote,figure{margin:0}
+button{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--gold);outline-offset:3px;box-shadow:0 0 0 6px var(--plum)}
+.skip-link{
+  position:absolute;left:12px;top:-80px;z-index:200;background:var(--plum);color:#fff;
+  padding:12px 18px;border-radius:12px;text-decoration:none;font-weight:600;
+}
+.skip-link:focus{top:12px}
+.sprite{position:absolute;width:0;height:0;overflow:hidden}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* ==========================================================
+   2. LAYOUT BASE
+   ========================================================== */
+.section{position:relative;padding:clamp(64px,10vw,120px) 20px;overflow:hidden}
+.container{position:relative;z-index:2;max-width:1120px;margin:0 auto}
+.title{
+  font-family:var(--font-title);font-weight:400;line-height:1.1;text-align:center;
+  font-size:clamp(2.6rem,9vw,4.6rem);overflow-wrap:anywhere;
+}
+.lead{text-align:center;font-size:clamp(1rem,2.6vw,1.2rem);margin-top:10px;overflow-wrap:anywhere}
+
+/* Fade-in com IntersectionObserver */
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .8s ease,transform .8s ease}
+.reveal.is-visible{opacity:1;transform:none}
+
+/* ==========================================================
+   3. HERO
+   ========================================================== */
+.hero{
+  position:relative;isolation:isolate;overflow:hidden;
+  min-height:100vh;min-height:100svh;
+  display:flex;flex-direction:column;align-items:center;justify-content:space-between;text-align:center;
+  padding:clamp(44px,9vh,96px) 20px 0;
+  background:linear-gradient(180deg,#0f1a5e 0%,#4169E1 38%,#FFC0CB 78%,#FFD700 100%);
+  color:#fff;
+}
+.hero-stars,.hero-lanterns{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.star{position:absolute;border-radius:50%;background:#fff;animation:twinkle var(--t,3s) ease-in-out infinite;animation-delay:var(--dl,0s)}
+.amb{position:absolute;bottom:-90px;left:var(--x);width:var(--w);height:calc(var(--w)*1.5);
+  opacity:.85;filter:drop-shadow(0 0 8px rgba(255,215,0,.85));animation:rise var(--t) linear infinite;animation-delay:var(--dl)}
+.hero-content{position:relative;z-index:3;max-width:760px;animation:fadeUp 1.1s ease both}
+.hero h1{
+  font-family:var(--font-title);font-weight:400;line-height:1;
+  font-size:clamp(3.2rem,14vw,6.8rem);text-shadow:0 4px 24px rgba(15,26,94,.6);
+}
+.hero h1 span{display:block;color:var(--gold)}
+.hero .sub{
+  margin-top:14px;font-size:clamp(1.05rem,3.8vw,1.55rem);font-weight:500;
+  text-shadow:0 2px 12px rgba(15,26,94,.7);overflow-wrap:anywhere;
+}
+.btn-gold{
+  margin-top:28px;display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  min-height:52px;min-width:44px;padding:14px 32px;border:0;border-radius:999px;cursor:pointer;
+  font-weight:700;font-size:1.05rem;color:var(--plum);
+  background:linear-gradient(135deg,#fff3a0,#FFD700 55%,#f5b800);
+  box-shadow:0 0 0 0 rgba(255,215,0,.6),0 10px 28px rgba(15,26,94,.35);
+  animation:pulse 2.6s ease-in-out infinite;transition:transform .2s ease,filter .2s ease;
+}
+.btn-gold:hover{transform:translateY(-3px) scale(1.04);filter:brightness(1.05)}
+.btn-gold:active{transform:scale(.97)}
+.hero-ground{position:absolute;left:0;right:0;bottom:0;height:56px;background:#7a9b60;z-index:1}
+.hero-art{
+  position:relative;z-index:2;display:block;margin-top:20px;
+  height:min(56vh,540px);height:min(56svh,540px);width:auto;max-width:100%;aspect-ratio:400/520;
+}
+.fl{animation:bob 6s ease-in-out infinite;animation-delay:var(--dl,0s);transform-box:fill-box;transform-origin:center}
+.launch{position:fixed;inset:0;z-index:90;pointer-events:none;overflow:hidden}
+.fly{position:absolute;bottom:-100px;left:var(--x);width:var(--w);height:calc(var(--w)*1.5);
+  filter:drop-shadow(0 0 10px rgba(255,215,0,.9));animation:fly var(--t) ease-in forwards;animation-delay:var(--dl)}
+
+/* ==========================================================
+   4. O ARQUIVO DA LENA
+   ========================================================== */
+.arquivo{background:linear-gradient(180deg,#FFE3E9 0%,#fff 100%)}
+.arquivo .title{color:var(--plum)}
+.arquivo-card{
+  position:relative;max-width:780px;margin:32px auto 0;padding:clamp(24px,5vw,48px);
+  background:var(--glass);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  border:1px solid var(--glass-border);border-radius:var(--radius);box-shadow:var(--shadow);
+  font-size:clamp(1.02rem,2.6vw,1.2rem);text-align:center;overflow-wrap:anywhere;
+}
+.arquivo-card mark{background:linear-gradient(transparent 60%,rgba(255,215,0,.6) 60%);color:inherit;padding:0 2px}
+.divider{display:flex;justify-content:center;align-items:center;gap:14px;margin-top:28px}
+.divider svg{width:44px;height:44px}
+.divider svg:nth-child(2){width:60px;height:60px}
+
+/* ==========================================================
+   5. LINHA DO TEMPO / ABAS
+   ========================================================== */
+.timeline{background:linear-gradient(180deg,#fff 0%,#fff4f7 55%,#fff 100%)}
+.timeline .title{color:var(--plum)}
+.tablist{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:32px 0 28px}
+.tab{
+  flex:1 1 150px;max-width:230px;min-height:48px;padding:10px 16px;border-radius:999px;cursor:pointer;
+  border:2px solid var(--plum);background:#fff;color:var(--plum);font-weight:600;font-size:.9rem;line-height:1.25;
+  transition:background .2s,color .2s,transform .2s,box-shadow .2s;
+}
+.tab:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
+.tab:active{transform:scale(.97)}
+.tab[aria-selected="true"]{background:var(--plum);color:#fff;box-shadow:inset 0 -4px 0 var(--gold),var(--shadow)}
+.panel:not([hidden]){animation:fadeUp .45s ease both}
+.panel-title{font-family:var(--font-title);font-weight:400;font-size:clamp(2rem,6vw,2.8rem);color:var(--plum);text-align:center;margin-bottom:22px;line-height:1.15}
+.grid-q{display:grid;gap:14px;grid-template-columns:1fr}
+.q-card{
+  display:flex;flex-direction:column;justify-content:space-between;gap:12px;padding:18px 20px;
+  background:var(--glass);border:1px solid var(--glass-border);border-left:5px solid var(--royal);
+  border-radius:16px;box-shadow:var(--shadow);transition:transform .2s,box-shadow .2s;
+}
+.q-card:hover{transform:translateY(-3px);box-shadow:0 14px 34px rgba(107,45,92,.25)}
+.q-card p{font-weight:500;overflow-wrap:anywhere}
+.q-card .note{display:block;margin-top:4px;font-size:.85rem;font-style:italic;color:var(--muted);font-weight:400}
+.stamp{display:inline-block;font-size:.8rem;font-weight:600;color:var(--muted);letter-spacing:.02em}
+.stamp::before{content:"✦ ";color:#b8860b}
+.exchange{display:flex;flex-direction:column;gap:8px;padding:18px;background:var(--glass);border:1px solid var(--glass-border);border-radius:18px;box-shadow:var(--shadow)}
+.bubble{max-width:92%;padding:10px 16px;border-radius:18px;overflow-wrap:anywhere}
+.bubble .who{display:block;font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;opacity:.9}
+.bubble.him{align-self:flex-start;background:var(--royal);color:#fff;border-bottom-left-radius:4px}
+.bubble.her{align-self:flex-end;background:#fff;color:var(--plum);border:2px solid var(--blush);border-bottom-right-radius:4px;font-weight:500}
+.exchange .stamp{align-self:flex-end}
+.slang{display:grid;gap:12px;grid-template-columns:repeat(2,minmax(0,1fr))}
+.slang li{
+  display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:4px;
+  min-height:84px;padding:14px 10px;border-radius:16px;font-weight:600;color:var(--plum);overflow-wrap:anywhere;
+  background:linear-gradient(145deg,#fff,#ffe9ef);border:1px solid #f6c3d0;box-shadow:var(--shadow);transition:transform .2s;
+}
+.slang li:hover{transform:translateY(-3px) rotate(-1deg)}
+.slang small{font-weight:500;font-size:.78rem;color:var(--muted)}
+.dreams{display:grid;gap:12px;grid-template-columns:1fr}
+.dreams li{display:flex;gap:14px;align-items:flex-start;padding:16px 18px;background:var(--glass);border:1px solid var(--glass-border);border-radius:16px;box-shadow:var(--shadow)}
+.dreams .num{
+  flex:none;width:38px;height:38px;border-radius:50%;display:grid;place-items:center;
+  font-weight:700;font-size:.9rem;color:var(--plum);background:linear-gradient(135deg,#fff3a0,var(--gold));
+}
+.dreams .body{min-width:0;display:flex;flex-direction:column;gap:4px}
+.dreams p{font-weight:500;overflow-wrap:anywhere}
+.duo{display:grid;gap:28px;grid-template-columns:1fr}
+.duo h4{font-family:var(--font-title);font-weight:400;font-size:2rem;color:var(--plum);text-align:center;margin-bottom:14px}
+.duo .grid-q{grid-template-columns:1fr}
+.duo .her-col .q-card{border-left-color:var(--plum)}
+.duo .him-col .q-card{border-left-color:var(--gold)}
+
+/* ==========================================================
+   6. REINO DAS 16 SURPRESAS
+   ========================================================== */
+.reino{
+  background:linear-gradient(180deg,#0f1a5e 0%,#2b45b8 40%,#4169E1 100%);color:#fff;
+  padding-bottom:clamp(150px,22vw,230px);
+}
+.sky-lanterns{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.sl{position:absolute;left:var(--x);top:var(--y);width:var(--w);height:calc(var(--w)*1.5);opacity:var(--o);
+  filter:drop-shadow(0 0 6px rgba(255,215,0,.7));animation:sway var(--t) ease-in-out infinite;animation-delay:var(--dl);animation-play-state:paused}
+.reino.in-view .sl{animation-play-state:running}
+.moon{position:absolute;z-index:1;top:18px;right:4%;width:clamp(72px,14vw,150px);height:auto;pointer-events:none}
+.reino-head{
+  max-width:720px;margin:0 auto;padding:clamp(22px,4vw,36px);text-align:center;border-radius:var(--radius);
+  background:rgba(15,26,94,.62);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  border:1px solid rgba(255,255,255,.22);box-shadow:var(--shadow-lg);
+}
+.reino-head .title{color:#fff;text-shadow:0 3px 18px rgba(0,0,0,.4)}
+.reino-head .lead{color:#fff}
+.heart-sticks{display:block;width:min(220px,60vw);height:auto;margin:20px auto 0;filter:drop-shadow(0 0 10px rgba(255,192,203,.7))}
+.counter{margin-top:14px;font-size:.92rem;font-weight:600;color:var(--gold)}
+.lanterns{display:grid;gap:50px 24px;grid-template-columns:1fr;max-width:340px;margin:56px auto 0;padding-top:10px}
+.lanterns li{animation:bob 5.5s ease-in-out infinite;animation-delay:calc(var(--i) * -.45s)}
+.lantern-card{
+  position:relative;width:100%;min-height:190px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;
+  padding:34px 26px 30px;border:0;cursor:pointer;text-align:center;color:var(--ink);
+  background:radial-gradient(ellipse at 50% 32%,#fff7bd 0%,#FFE24D 46%,#FFC400 100%);
+  border-radius:40px 40px 48px 48px / 64px 64px 48px 48px;
+  box-shadow:0 0 34px rgba(255,215,0,.55),inset 0 -14px 26px rgba(200,120,0,.28);
+  transition:transform .25s ease,box-shadow .25s ease,filter .25s;
+}
+.lantern-card::before{
+  content:"";position:absolute;top:-10px;left:50%;width:46%;height:16px;transform:translateX(-50%);
+  border-radius:8px;background:linear-gradient(#8a4a1a,#b8741a);box-shadow:0 -12px 0 -6px rgba(255,215,0,.8);
+}
+.lantern-card::after{
+  content:"";position:absolute;bottom:-26px;left:50%;width:4px;height:28px;transform:translateX(-50%);
+  border-radius:2px;background:linear-gradient(#b8741a,#FFD700);
+}
+.lantern-card:hover{transform:translateY(-6px) scale(1.04);box-shadow:0 0 54px rgba(255,215,0,.9),inset 0 -14px 26px rgba(200,120,0,.28)}
+.lantern-card:active{transform:scale(.97)}
+.lantern-card .ico{width:64px;height:64px;padding:6px;border-radius:50%;background:rgba(255,255,255,.82);box-shadow:0 4px 12px rgba(107,45,92,.25)}
+.lantern-card .ico svg{width:100%;height:100%;display:block}
+.lantern-card .nm{font-size:.7rem;font-weight:700;letter-spacing:.14em;color:#5a2a00}
+.lantern-card .tt{font-size:.88rem;font-weight:700;letter-spacing:.04em;line-height:1.3;text-transform:uppercase;color:var(--ink);overflow-wrap:anywhere}
+.lantern-card .check{display:none;position:absolute;top:22px;right:26px;width:26px;height:26px;border-radius:50%;background:var(--plum);color:#fff;font-size:.8rem;line-height:26px;font-weight:700}
+.lantern-card.is-opened .check{display:block}
+.lantern-card.is-opened{filter:saturate(.85) brightness(.97)}
+.cinna-corner{position:absolute;z-index:1;bottom:10px;right:10px;width:clamp(96px,16vw,170px);height:auto;pointer-events:none;filter:drop-shadow(0 6px 14px rgba(0,0,0,.3));animation:bob 4s ease-in-out infinite}
+
+/* ==========================================================
+   7. MODAL
+   ========================================================== */
+.modal{
+  position:fixed;inset:0;z-index:100;display:grid;place-items:center;padding:16px;
+  background:rgba(10,16,70,.75);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
+  opacity:0;visibility:hidden;transition:opacity .25s ease,visibility .25s ease;
+}
+.modal.open{opacity:1;visibility:visible}
+.modal-box{
+  position:relative;width:min(100%,520px);max-height:calc(100vh - 32px);max-height:calc(100dvh - 32px);overflow-y:auto;
+  padding:clamp(26px,5vw,40px) clamp(20px,5vw,36px) 28px;text-align:center;color:var(--ink);
+  background:linear-gradient(160deg,rgba(255,255,255,.96),rgba(255,236,242,.96));
+  border:2px solid var(--gold);border-radius:28px;box-shadow:0 0 60px rgba(255,215,0,.5),var(--shadow-lg);
+  transform:translateY(24px) scale(.95);transition:transform .3s ease;
+}
+.modal.open .modal-box{transform:none}
+.modal-box:focus{outline:none}
+.modal-close{
+  position:absolute;top:10px;right:10px;width:44px;height:44px;border:0;border-radius:50%;cursor:pointer;
+  background:var(--plum);color:#fff;font-size:1.4rem;line-height:1;display:grid;place-items:center;transition:transform .2s;
+}
+.modal-close:hover{transform:rotate(90deg) scale(1.08)}
+.modal-ico{width:92px;height:92px;margin:0 auto 10px;padding:10px;border-radius:50%;background:#fff;box-shadow:0 0 0 4px var(--gold),0 8px 24px rgba(107,45,92,.25)}
+.modal-ico svg{width:100%;height:100%;display:block}
+.modal-num{font-family:var(--font-title);font-size:1.9rem;color:var(--plum);line-height:1.2}
+.modal-title{font-size:clamp(1.05rem,3.6vw,1.3rem);font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--plum);margin:2px 0 14px;overflow-wrap:anywhere}
+.modal-text{font-size:clamp(1rem,2.8vw,1.1rem);overflow-wrap:anywhere;text-align:left}
+.modal-ref{display:inline-block;margin-top:16px;font-size:.82rem;font-weight:600;color:var(--muted)}
+.modal-ref::before{content:"✦ Ref.: ";color:#b8860b}
+.modal-actions{margin-top:20px}
+.btn-plum{
+  min-height:48px;min-width:44px;padding:12px 28px;border:0;border-radius:999px;cursor:pointer;
+  background:var(--plum);color:#fff;font-weight:600;transition:transform .2s,filter .2s;
+}
+.btn-plum:hover{transform:translateY(-2px);filter:brightness(1.15)}
+.btn-plum:active{transform:scale(.97)}
+
+/* ==========================================================
+   8. SEÇÃO BARBIE
+   ========================================================== */
+.barbie{background:linear-gradient(160deg,#FFC0CB 0%,#ffe1e8 45%,#fff0b3 100%)}
+.barbie .title{color:var(--plum)}
+.glitter{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.gl{position:absolute;left:var(--x);top:var(--y);width:var(--s);height:var(--s);background:#FFD700;
+  clip-path:polygon(50% 0,60% 40%,100% 50%,60% 60%,50% 100%,40% 60%,0 50%,40% 40%);animation:twinkle var(--t) ease-in-out infinite;animation-delay:var(--dl)}
+.stage{display:block;width:min(100%,380px);height:auto;margin:30px auto 10px;filter:drop-shadow(0 18px 30px rgba(107,45,92,.35))}
+.bulbs{animation:glow 1.8s ease-in-out infinite alternate}
+.acts{display:grid;gap:20px;grid-template-columns:1fr;margin-top:30px}
+.act{
+  display:flex;flex-direction:column;gap:10px;text-align:center;padding:28px 22px;
+  background:rgba(255,255,255,.72);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  border:2px solid rgba(255,215,0,.8);border-radius:var(--radius);box-shadow:var(--shadow);
+  transition:transform .25s,box-shadow .25s;
+}
+.act:hover{transform:translateY(-6px) rotate(-.6deg);box-shadow:0 20px 44px rgba(107,45,92,.3)}
+.act .ato{font-family:var(--font-title);font-size:2.2rem;color:var(--plum);line-height:1.1}
+.act blockquote{font-size:clamp(1.25rem,4vw,1.5rem);font-weight:600;font-style:italic;color:var(--ink);overflow-wrap:anywhere}
+
+/* ==========================================================
+   9. RODAPÉ
+   ========================================================== */
+.footer{
+  position:relative;overflow:hidden;padding:clamp(56px,9vw,96px) 20px;text-align:center;color:#fff;
+  background:linear-gradient(180deg,#6B2D5C 0%,#3b1233 100%);
+}
+.footer p.msg{max-width:640px;margin:0 auto;font-size:clamp(1.05rem,3vw,1.3rem);overflow-wrap:anywhere}
+.footer .sign{font-family:var(--font-title);font-size:clamp(2.6rem,9vw,4.2rem);line-height:1.15;color:var(--gold);margin-top:20px;overflow-wrap:anywhere}
+.footer .gui{font-weight:600;letter-spacing:.06em;margin-top:6px}
+.footer .divider svg{width:40px;height:40px}
+
+/* ==========================================================
+   10. PÉTALAS
+   ========================================================== */
+.petals{position:fixed;inset:0;z-index:40;pointer-events:none;overflow:hidden}
+.petal{
+  position:absolute;top:-40px;left:var(--x);width:var(--w);height:calc(var(--w)*1.7);opacity:.8;
+  background:linear-gradient(#FFE866,#FFC400);border-radius:50% 50% 50% 50% / 75% 75% 25% 25%;
+  animation:fall var(--t) linear infinite;animation-delay:var(--dl);
+}
+
+/* ==========================================================
+   11. KEYFRAMES
+   ========================================================== */
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+@keyframes twinkle{0%,100%{opacity:.25;transform:scale(.8)}50%{opacity:1;transform:scale(1.15)}}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+@keyframes sway{0%,100%{transform:translate(0,0)}50%{transform:translate(6px,-14px)}}
+@keyframes rise{0%{transform:translate(0,0);opacity:0}10%{opacity:.9}100%{transform:translate(var(--sx,20px),-125vh);opacity:.2}}
+@keyframes fly{0%{transform:translate(0,0);opacity:1}70%{opacity:1}100%{transform:translate(var(--sx),-125vh);opacity:0}}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(255,215,0,.55),0 10px 28px rgba(15,26,94,.35)}50%{box-shadow:0 0 0 14px rgba(255,215,0,0),0 10px 28px rgba(15,26,94,.35)}}
+@keyframes glow{from{opacity:.55}to{opacity:1}}
+@keyframes fall{
+  0%{transform:translate(0,-40px) rotate(0deg)}
+  50%{transform:translate(var(--dx),55vh) rotate(180deg)}
+  100%{transform:translate(calc(var(--dx) * -.5),112vh) rotate(380deg)}
+}
+
+/* ==========================================================
+   12. RESPONSIVO
+   ========================================================== */
+@media (min-width:640px){
+  .grid-q{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .slang{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .dreams{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .lanterns{grid-template-columns:repeat(2,minmax(0,1fr));max-width:620px}
+  .acts{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+@media (min-width:900px){
+  .duo{grid-template-columns:repeat(2,minmax(0,1fr));align-items:start}
+  .duo .grid-q{grid-template-columns:1fr}
+  .slang{grid-template-columns:repeat(4,minmax(0,1fr))}
+}
+@media (min-width:1024px){
+  .lanterns{grid-template-columns:repeat(4,minmax(0,1fr));max-width:1100px}
+}
+@media (max-width:420px){
+  .section{padding-left:16px;padding-right:16px}
+  .tab{flex:1 1 130px;font-size:.85rem}
+}
+
+/* ==========================================================
+   13. REDUCED MOTION
+   ========================================================== */
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .reveal{opacity:1;transform:none}
+  .amb{bottom:auto;top:var(--top);opacity:.8}
+  .petals,.launch{display:none}
+}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#arquivo">Pular para o conteúdo</a>
+
+<!-- ==========================================================
+     SPRITE SVG (símbolos reutilizáveis, desenhados manualmente)
+     ========================================================== -->
+<svg class="sprite" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="gLantern" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fff6b0"/><stop offset=".5" stop-color="#FFD700"/><stop offset="1" stop-color="#e59a00"/>
+    </linearGradient>
+    <radialGradient id="gGlow">
+      <stop offset="0" stop-color="#FFE866" stop-opacity=".9"/><stop offset="1" stop-color="#FFD700" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="gCarpet" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#d90429"/><stop offset="1" stop-color="#8d0b25"/>
+    </linearGradient>
+    <linearGradient id="gStage" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffe3ea"/><stop offset="1" stop-color="#ffb3c6"/>
+    </linearGradient>
+    <linearGradient id="gSpot" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fff" stop-opacity=".85"/><stop offset="1" stop-color="#fff" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="gTower" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#3a2a6c"/><stop offset=".5" stop-color="#4b3a86"/><stop offset="1" stop-color="#2f2262"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Lanterna dourada -->
+  <symbol id="lantern" viewBox="0 0 40 60">
+    <path d="M20 0v5" stroke="#b8860b" stroke-width="1.4" fill="none"/>
+    <rect x="11" y="5" width="18" height="5" rx="2" fill="#b8741a"/>
+    <path d="M11 10C2 16 2 36 9 46H31C38 36 38 16 29 10Z" fill="url(#gLantern)" stroke="#e0a000" stroke-width="1"/>
+    <path d="M20 10V46M14 11C8 20 8 36 13 46M26 11C32 20 32 36 27 46" stroke="#c98a00" stroke-width=".7" fill="none" opacity=".6"/>
+    <ellipse cx="20" cy="28" rx="6" ry="10" fill="#fff" opacity=".35"/>
+    <rect x="9" y="46" width="22" height="4" rx="2" fill="#b8741a"/>
+    <path d="M20 50v7M17 50l-1 6M23 50l1 6" stroke="#ffd34d" stroke-width="1.2" stroke-linecap="round" fill="none"/>
+  </symbol>
+
+  <!-- Girassol -->
+  <symbol id="sunflower" viewBox="0 0 64 64">
+    <g fill="#f5b800" stroke="#c98a00" stroke-width=".8">
+      <ellipse cx="32" cy="11" rx="5" ry="10" transform="rotate(15 32 32)"/>
+      <ellipse cx="32" cy="11" rx="5" ry="10" transform="rotate(45 32 32)"/>
+      <ellipse cx="32" cy="11" rx="5" ry="10" transform="rotate(75 32 32)"/>
+      <ellipse cx="32" cy="11" rx="5" ry="10" transform="rotate(105 32 32)"/>
+      <ellipse cx="32" cy="11" rx="5" ry="10" transform="rotate(135 32 32)"/>
+      <ellipse cx="32" cy="11" rx="5" ry="10" transform="rotate(165 32 32)"/>
+      <ellipse cx="32" cy="11" rx="5" ry="10" transform="rotate(195 32 32)"/>
+      <ellipse cx="32" cy="11" rx="5" ry="10" transform="rotate(225 32 32)"/>
+      <ellipse cx="32" cy="11" rx="5" ry="10" transform="rotate(255 32 32)"/>
+      <ellipse cx="32" cy="11" rx="5" ry="10" transform="rotate(285 32 32)"/>
+      <ellipse cx="32" cy="11" rx="5" ry="10" transform="rotate(315 32 32)"/>
+      <ellipse cx="32" cy="11" rx="5" ry="10" transform="rotate(345 32 32)"/>
+    </g>
+    <g fill="#FFD700" stroke="#d99a00" stroke-width=".8">
+      <ellipse cx="32" cy="12" rx="5" ry="10"/>
+      <ellipse cx="32" cy="12" rx="5" ry="10" transform="rotate(30 32 32)"/>
+      <ellipse cx="32" cy="12" rx="5" ry="10" transform="rotate(60 32 32)"/>
+      <ellipse cx="32" cy="12" rx="5" ry="10" transform="rotate(90 32 32)"/>
+      <ellipse cx="32" cy="12" rx="5" ry="10" transform="rotate(120 32 32)"/>
+      <ellipse cx="32" cy="12" rx="5" ry="10" transform="rotate(150 32 32)"/>
+      <ellipse cx="32" cy="12" rx="5" ry="10" transform="rotate(180 32 32)"/>
+      <ellipse cx="32" cy="12" rx="5" ry="10" transform="rotate(210 32 32)"/>
+      <ellipse cx="32" cy="12" rx="5" ry="10" transform="rotate(240 32 32)"/>
+      <ellipse cx="32" cy="12" rx="5" ry="10" transform="rotate(270 32 32)"/>
+      <ellipse cx="32" cy="12" rx="5" ry="10" transform="rotate(300 32 32)"/>
+      <ellipse cx="32" cy="12" rx="5" ry="10" transform="rotate(330 32 32)"/>
+    </g>
+    <circle cx="32" cy="32" r="11" fill="#5a3317"/>
+    <circle cx="32" cy="32" r="7" fill="#7a4a22"/>
+    <g fill="#3d200d"><circle cx="29" cy="29" r="1.2"/><circle cx="35" cy="30" r="1.2"/><circle cx="32" cy="35" r="1.2"/><circle cx="28" cy="34" r="1"/><circle cx="36" cy="35" r="1"/><circle cx="32" cy="29" r="1"/></g>
+  </symbol>
+
+  <!-- Lightstick (cor pela propriedade color) -->
+  <symbol id="lightstick" viewBox="0 0 20 64">
+    <circle cx="10" cy="11" r="9" fill="currentColor"/>
+    <circle cx="10" cy="11" r="9" fill="none" stroke="#fff" stroke-width="1.4" opacity=".85"/>
+    <circle cx="7" cy="8" r="2.5" fill="#fff" opacity=".75"/>
+    <rect x="6" y="19" width="8" height="6" rx="2" fill="#e8e8f4" stroke="#5b4a8a" stroke-width=".6"/>
+    <rect x="7" y="25" width="6" height="36" rx="3" fill="#f4f4fa" stroke="#5b4a8a" stroke-width=".6"/>
+    <rect x="7" y="40" width="6" height="3" fill="currentColor" opacity=".7"/>
+  </symbol>
+
+  <!-- Cinnamoroll -->
+  <symbol id="cinna" viewBox="0 0 100 100">
+    <path d="M76 82c12-2 16-14 8-18" fill="none" stroke="#cfe6ff" stroke-width="5" stroke-linecap="round"/>
+    <ellipse cx="50" cy="84" rx="20" ry="12" fill="#fff" stroke="#bfdcff" stroke-width="2"/>
+    <ellipse cx="32" cy="94" rx="7" ry="4" fill="#fff" stroke="#bfdcff" stroke-width="2"/>
+    <ellipse cx="68" cy="94" rx="7" ry="4" fill="#fff" stroke="#bfdcff" stroke-width="2"/>
+    <ellipse cx="17" cy="48" rx="13" ry="24" transform="rotate(14 17 48)" fill="#fff" stroke="#bfdcff" stroke-width="2"/>
+    <ellipse cx="83" cy="48" rx="13" ry="24" transform="rotate(-14 83 48)" fill="#fff" stroke="#bfdcff" stroke-width="2"/>
+    <ellipse cx="17" cy="50" rx="6" ry="14" transform="rotate(14 17 50)" fill="#e6f2ff"/>
+    <ellipse cx="83" cy="50" rx="6" ry="14" transform="rotate(-14 83 50)" fill="#e6f2ff"/>
+    <ellipse cx="50" cy="52" rx="31" ry="27" fill="#fff" stroke="#bfdcff" stroke-width="2"/>
+    <path d="M44 27c2-5 10-5 12 0" fill="none" stroke="#cfe6ff" stroke-width="3" stroke-linecap="round"/>
+    <circle cx="38" cy="52" r="3.6" fill="#2a3a6a"/>
+    <circle cx="62" cy="52" r="3.6" fill="#2a3a6a"/>
+    <circle cx="37" cy="50.8" r="1.2" fill="#fff"/>
+    <circle cx="61" cy="50.8" r="1.2" fill="#fff"/>
+    <ellipse cx="29" cy="60" rx="6" ry="3.6" fill="#ffb6cf" opacity=".85"/>
+    <ellipse cx="71" cy="60" rx="6" ry="3.6" fill="#ffb6cf" opacity=".85"/>
+    <path d="M46 60q4 4 8 0" fill="none" stroke="#2a3a6a" stroke-width="2" stroke-linecap="round"/>
+  </symbol>
+
+  <!-- ÍCONES DAS 16 LANTERNAS -->
+  <symbol id="ic-1" viewBox="0 0 64 64">
+    <use href="#sunflower" x="0" y="2" width="46" height="46"/>
+    <g transform="rotate(38 50 46)">
+      <rect x="47" y="34" width="6" height="26" rx="3" fill="#6B2D5C"/>
+      <rect x="46" y="30" width="8" height="6" fill="#c9b6d4"/>
+      <path d="M46 30c0-8 2-12 4-14 2 2 4 6 4 14z" fill="#4169E1"/>
+    </g>
+  </symbol>
+  <symbol id="ic-2" viewBox="0 0 64 64">
+    <use href="#lantern" x="10" y="1" width="44" height="66"/>
+    <text x="32" y="36" text-anchor="middle" font-family="Poppins,sans-serif" font-weight="700" font-size="10" fill="#6B2D5C">BTS</text>
+    <path d="M32 44c-3-3-6-1-6 1.500 0 3 6 6 6 6s6-3 6-6c0-2.500-3-4.500-6-1.500z" fill="#8a4fc9" transform="translate(0 -2) scale(1)"/>
+  </symbol>
+  <symbol id="ic-3" viewBox="0 0 64 64">
+    <use href="#lightstick" x="6" y="0" width="20" height="64" style="color:#ff6fa8"/>
+    <path d="M44 52c-10-8-16-14-16-21 0-6 4-9 8-9 3 0 6 2 8 5 2-3 5-5 8-5 4 0 8 3 8 9 0 7-6 13-16 21z" transform="translate(-4 -8) scale(.85)" fill="#e0245e"/>
+  </symbol>
+  <symbol id="ic-4" viewBox="0 0 64 64">
+    <use href="#lightstick" x="6" y="0" width="20" height="64" style="color:#d9263a"/>
+    <path d="M44 10l4.500 12 12.500.5-10 8 3.500 12.500L44 35.500 33.500 43l3.500-12.500-10-8L39.500 22z" fill="#FFD700" stroke="#c98a00" stroke-width="1.500" stroke-linejoin="round" transform="translate(0 6) scale(.9)"/>
+  </symbol>
+  <symbol id="ic-5" viewBox="0 0 64 64">
+    <path d="M40 6A26 26 0 1 0 58 46A21 21 0 0 1 40 6Z" fill="#6B2D5C"/>
+    <path d="M50 12l2.200 5.500 5.800.4-4.500 3.700 1.500 5.700L50 24l-5 3.300 1.500-5.700L42 17.900l5.800-.4z" fill="#FFD700" stroke="#c98a00" stroke-width="1"/>
+    <circle cx="20" cy="30" r="1.800" fill="#FFD700"/>
+  </symbol>
+  <symbol id="ic-6" viewBox="0 0 64 64">
+    <use href="#cinna" x="0" y="0" width="64" height="64"/>
+  </symbol>
+  <symbol id="ic-7" viewBox="0 0 64 64">
+    <polygon points="32,8 56,20 32,32 8,20" fill="#6fbf3f"/>
+    <polygon points="8,20 32,32 32,58 8,46" fill="#8a5a32"/>
+    <polygon points="56,20 32,32 32,58 56,46" fill="#6b4425"/>
+    <polygon points="8,20 32,32 32,40 8,28" fill="#4f9a2e"/>
+    <polygon points="56,20 32,32 32,40 56,28" fill="#3f7f24"/>
+    <g fill="#5a3a1e" opacity=".7"><rect x="14" y="38" width="4" height="4"/><rect x="22" y="46" width="4" height="4"/><rect x="40" y="46" width="4" height="4"/><rect x="48" y="36" width="4" height="4"/></g>
+    <polygon points="32,8 56,20 32,32 8,20" fill="none" stroke="#2f6a1b" stroke-width="1.500" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="ic-8" viewBox="0 0 64 64">
+    <circle cx="22" cy="40" r="17" fill="#f27fa6"/>
+    <path d="M9 34c10 4 22 0 28-6M7 42c12 5 26 0 31-8M10 50c10 4 20 1 26-5" fill="none" stroke="#c8466f" stroke-width="2" stroke-linecap="round"/>
+    <circle cx="47" cy="48" r="12" fill="#FFD700"/>
+    <path d="M37 44c8 3 14 0 18-5M38 52c7 3 13 0 17-4" fill="none" stroke="#c98a00" stroke-width="2" stroke-linecap="round"/>
+    <path d="M30 28c8-6 14-12 22-22" fill="none" stroke="#6B2D5C" stroke-width="3.500" stroke-linecap="round"/>
+    <path d="M52 6c4-1 6 3 3 5" fill="none" stroke="#6B2D5C" stroke-width="3" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="ic-9" viewBox="0 0 64 64">
+    <path d="M24 6C34 6 42 24 42 38C42 50 34 58 24 58C14 58 6 50 6 38C6 24 14 6 24 6Z" fill="#7b3f1d"/>
+    <path d="M7 34l5-5 6 5 6-5 6 5 6-5 6 5 3-3" fill="none" stroke="#FFC0CB" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+    <path d="M10 46l5-4 5 4 5-4 5 4 5-4 5 4" fill="none" stroke="#FFD700" stroke-width="2.500" stroke-linejoin="round" stroke-linecap="round"/>
+    <ellipse cx="17" cy="18" rx="3" ry="6" transform="rotate(20 17 18)" fill="#fff" opacity=".3"/>
+    <ellipse cx="50" cy="48" rx="8" ry="6.500" fill="#4a2410"/>
+    <path d="M42 48l-5-5v10zM58 48l5-5v10z" fill="#FFD700" transform="translate(-1 0)"/>
+    <ellipse cx="48" cy="46" rx="3" ry="2" fill="#fff" opacity=".3"/>
+  </symbol>
+  <symbol id="ic-10" viewBox="0 0 64 64">
+    <ellipse cx="17" cy="48" rx="8" ry="6" transform="rotate(-18 17 48)" fill="#6B2D5C"/>
+    <path d="M24 46V14l16 6v8l-16-6" fill="#6B2D5C" stroke="#6B2D5C" stroke-width="2" stroke-linejoin="round"/>
+    <rect x="44" y="34" width="11" height="24" rx="2" fill="#fff4d6" stroke="#c9a14a" stroke-width="1.500"/>
+    <path d="M49.500 33c-4-5-1-9 0-12 1 3 4 7 0 12z" fill="#FFB800"/>
+    <path d="M49.500 31c-2-3-.5-5 0-7 .5 2 2 4 0 7z" fill="#fff3a0"/>
+  </symbol>
+  <symbol id="ic-11" viewBox="0 0 64 64">
+    <g transform="translate(-2 2) scale(.95)">
+      <path d="M6 36C10 26 22 22 31 28C37 24 43 24 47 18C48 28 44 35 38 39C30 47 16 47 6 36Z" fill="#fff" stroke="#4169E1" stroke-width="2" stroke-linejoin="round"/>
+      <path d="M22 28C24 16 32 9 42 8C40 18 34 25 28 31Z" fill="#eef3ff" stroke="#4169E1" stroke-width="2" stroke-linejoin="round"/>
+      <path d="M47 18l6-1-4 5z" fill="#FFD700"/>
+      <circle cx="44" cy="20" r="1.200" fill="#2a1030"/>
+      <path d="M8 38l-4 8 9-5" fill="#fff" stroke="#4169E1" stroke-width="1.800" stroke-linejoin="round"/>
+    </g>
+    <rect x="52" y="38" width="8" height="21" rx="2" fill="#fff4d6" stroke="#c9a14a" stroke-width="1.500"/>
+    <path d="M56 37c-3-4-1-7 0-10 1 3 3 6 0 10z" fill="#FFB800"/>
+  </symbol>
+  <symbol id="ic-12" viewBox="0 0 64 64">
+    <path d="M4 26h28a4 4 0 0 1 4 4v24a4 4 0 0 1-4 4H4z" fill="#4169E1"/>
+    <path d="M8 26v32M12 32h18M12 38h18M12 44h14" stroke="#fff" stroke-width="2" stroke-linecap="round" fill="none"/>
+    <g transform="rotate(24 46 32)">
+      <rect x="44" y="4" width="4.500" height="34" rx="1.500" fill="#dfe6f4" stroke="#6B2D5C" stroke-width="1.200"/>
+      <rect x="38" y="38" width="16" height="4" rx="2" fill="#FFD700" stroke="#c98a00" stroke-width="1"/>
+      <rect x="44" y="42" width="4.500" height="12" rx="1.500" fill="#6B2D5C"/>
+      <circle cx="46.250" cy="56" r="3" fill="#FFD700" stroke="#c98a00" stroke-width="1"/>
+    </g>
+  </symbol>
+  <symbol id="ic-13" viewBox="0 0 64 64">
+    <path d="M22 4A16 16 0 1 0 34 30A13 13 0 0 1 22 4Z" fill="#FFD700" stroke="#c98a00" stroke-width="1"/>
+    <path d="M34 36C32 30 22 26 8 30C13 33 13 40 15 44C19 40 24 40 28 47C30 45 32 45 34 49C36 45 38 45 40 47C44 40 49 40 53 44C55 40 55 33 60 30C46 26 36 30 34 36Z" transform="translate(-1 6)" fill="#3b1233"/>
+    <path d="M30 34l1-5 3 3 3-3 1 5z" transform="translate(-1 6)" fill="#3b1233"/>
+    <circle cx="31" cy="42" r="1.200" fill="#ff4d6d"/>
+    <circle cx="37" cy="42" r="1.200" fill="#ff4d6d"/>
+  </symbol>
+  <symbol id="ic-14" viewBox="0 0 64 64">
+    <path d="M10 38C8 14 56 14 54 38" fill="none" stroke="#6B2D5C" stroke-width="4.500" stroke-linecap="round"/>
+    <rect x="5" y="34" width="12" height="20" rx="5" fill="#4169E1" stroke="#6B2D5C" stroke-width="2"/>
+    <rect x="47" y="34" width="12" height="20" rx="5" fill="#4169E1" stroke="#6B2D5C" stroke-width="2"/>
+    <ellipse cx="28" cy="48" rx="4.500" ry="3.500" transform="rotate(-18 28 48)" fill="#e0245e"/>
+    <path d="M32 47V28l9 3v5l-9-2" fill="#e0245e" stroke="#e0245e" stroke-width="1.500" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="ic-15" viewBox="0 0 64 64">
+    <ellipse cx="30" cy="42" rx="15" ry="19" fill="#f5a623" stroke="#b8730a" stroke-width="1.500"/>
+    <path d="M18 28l24 28M30 24l14 17M16 38l14 16M42 28L18 54M30 23L17 38M44 38L32 54" stroke="#b8730a" stroke-width="1.200" fill="none" opacity=".8"/>
+    <path d="M30 25C26 16 22 12 18 6C25 9 28 13 30 18C31 12 34 8 40 4C39 11 35 17 30 25Z" fill="#4f8a2e" stroke="#2f6a1b" stroke-width="1" stroke-linejoin="round"/>
+    <path d="M30 24C29 16 30 10 31 3C34 10 33 17 30 24Z" fill="#6aa83c" stroke="#2f6a1b" stroke-width="1" stroke-linejoin="round"/>
+    <circle cx="52" cy="13" r="6" fill="#FFD700" stroke="#c98a00" stroke-width="1"/>
+    <path d="M52 2v3M52 21v3M41 13h3M60 13h3M44 5l2 2M58 5l-2 2M44 21l2-2M58 21l-2-2" stroke="#c98a00" stroke-width="1.800" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="ic-16" viewBox="0 0 64 64">
+    <circle cx="32" cy="36" r="21" fill="#e63946"/>
+    <ellipse cx="24" cy="26" rx="5" ry="3" transform="rotate(-30 24 26)" fill="#fff" opacity=".35"/>
+    <path d="M32 18l-4-8 6 3 3-6 2 7 7-1-6 6z" fill="#4f8a2e" stroke="#2f6a1b" stroke-width="1" stroke-linejoin="round"/>
+    <path d="M21 33q3.500-5 7 0M36 33q3.500-5 7 0" fill="none" stroke="#2a1030" stroke-width="2.200" stroke-linecap="round"/>
+    <path d="M22 40q10 15 20 0z" fill="#7a1020"/>
+    <path d="M27 47q5-4 10 0q-5 4-10 0z" fill="#ff8fa3"/>
+    <path d="M18 46c-3 0-3-4 0-4" fill="none" stroke="#fff" stroke-width="1.500" opacity=".0"/>
+  </symbol>
+</svg>
+
+<!-- Camadas decorativas -->
+<div class="petals" id="petals" aria-hidden="true"></div>
+<div class="launch" id="launch" aria-hidden="true"></div>
+
+<main id="conteudo">
+
+<!-- ==========================================================
+     SEÇÃO 1 — HERO
+     ========================================================== -->
+<header class="hero" id="topo">
+  <div class="hero-stars" id="heroStars" aria-hidden="true"></div>
+  <div class="hero-lanterns" id="heroLanterns" aria-hidden="true"></div>
+  <div class="hero-content">
+    <h1>Feliz Aniversário, <span>Lena</span></h1>
+    <p class="sub">17 anos</p>
+    <button type="button" class="btn-gold" id="enterBtn">Entrar no Reino <span aria-hidden="true">✨</span></button>
+  </div>
+  <div class="hero-ground" aria-hidden="true"></div>
+  <svg class="hero-art" viewBox="0 0 400 520" preserveAspectRatio="xMidYMax meet" role="img"
+       aria-label="Ilustração: silhueta de uma garota de costas no topo de uma torre, com fones de ouvido e uma presilha de estrela, soltando lanternas douradas no céu estrelado. Girassóis na base da torre.">
+    <!-- lanternas flutuando ao redor -->
+    <g>
+      <use class="fl" href="#lantern" x="60" y="60" width="26" height="39" style="--dl:-1s"/>
+      <use class="fl" href="#lantern" x="318" y="40" width="30" height="45" style="--dl:-3s"/>
+      <use class="fl" href="#lantern" x="110" y="150" width="20" height="30" style="--dl:-2s"/>
+      <use class="fl" href="#lantern" x="285" y="140" width="22" height="33" style="--dl:-4s"/>
+      <use class="fl" href="#lantern" x="30" y="210" width="18" height="27" style="--dl:-5s"/>
+      <use class="fl" href="#lantern" x="352" y="215" width="18" height="27" style="--dl:-2.500s"/>
+      <use class="fl" href="#lantern" x="190" y="30" width="22" height="33" style="--dl:-3.500s"/>
+    </g>
+    <!-- brilho da lanterna na mão -->
+    <circle cx="238" cy="124" r="34" fill="url(#gGlow)"/>
+    <!-- torre -->
+    <rect x="150" y="248" width="100" height="256" fill="url(#gTower)"/>
+    <g stroke="#fff" stroke-opacity=".09" stroke-width="1.500">
+      <path d="M150 275h100M150 305h100M150 335h100M150 365h100M150 395h100M150 425h100M150 455h100M150 485h100"/>
+      <path d="M180 248v27M220 275v30M170 305v30M215 335v30M185 365v30M225 395v30M175 425v30M210 455v30"/>
+    </g>
+    <rect x="138" y="240" width="124" height="14" rx="2" fill="#2f2262"/>
+    <rect x="138" y="226" width="14" height="14" fill="#2f2262"/>
+    <rect x="248" y="226" width="14" height="14" fill="#2f2262"/>
+    <path d="M192 332v-24a8 8 0 0 1 16 0v24z" fill="#FFD700" opacity=".9"/>
+    <path d="M194 410v-16a6 6 0 0 1 12 0v16z" fill="#FFC0CB" opacity=".75"/>
+    <!-- garota de costas -->
+    <g>
+      <path d="M184 196L170 240H230L216 196Z" fill="#6B2D5C"/>
+      <path d="M170 240H230" stroke="#FFC0CB" stroke-width="1.500" opacity=".6"/>
+      <rect x="186" y="176" width="28" height="26" rx="9" fill="#6B2D5C"/>
+      <path d="M187 188Q178 206 180 224" fill="none" stroke="#6B2D5C" stroke-width="7" stroke-linecap="round"/>
+      <circle cx="180" cy="225" r="4" fill="#1c1030"/>
+      <path d="M213 187Q231 176 236 150" fill="none" stroke="#6B2D5C" stroke-width="7" stroke-linecap="round"/>
+      <circle cx="236" cy="146" r="4.500" fill="#1c1030"/>
+      <path d="M185 158C178 170 176 196 182 214Q200 222 218 214C224 196 222 170 215 158Z" fill="#1c1030"/>
+      <circle cx="200" cy="156" r="15" fill="#1c1030"/>
+      <path d="M184 158C184 132 216 132 216 158" fill="none" stroke="#FFC0CB" stroke-width="3.500" stroke-linecap="round"/>
+      <rect x="178" y="153" width="9" height="15" rx="4.500" fill="#FFC0CB"/>
+      <rect x="213" y="153" width="9" height="15" rx="4.500" fill="#FFC0CB"/>
+      <path d="M191 135L192.900 139.600L197.800 140L194.100 143.200L195.300 148L191 145.400L186.700 148L187.900 143.200L184.200 140L189.100 139.600Z" fill="#FFD700" stroke="#fff3a0" stroke-width=".8"/>
+    </g>
+    <!-- lanterna na mão -->
+    <use href="#lantern" x="226" y="98" width="24" height="36"/>
+    <use class="fl" href="#lantern" x="244" y="78" width="14" height="21" style="--dl:-1.500s"/>
+    <!-- colina -->
+    <path d="M0 496Q100 476 200 490Q300 476 400 496V520H0Z" fill="#7a9b60"/>
+    <path d="M0 506Q120 494 200 502Q300 492 400 506V520H0Z" fill="#6a8a52"/>
+    <!-- girassóis na base -->
+    <g stroke="#5f7f4a" stroke-width="3.500" stroke-linecap="round" fill="none">
+      <path d="M92 440Q96 470 100 500"/><path d="M130 456Q128 480 126 502"/>
+      <path d="M272 456Q274 480 276 502"/><path d="M308 440Q304 470 300 500"/>
+      <path d="M56 470Q58 490 60 505"/><path d="M344 470Q342 490 340 505"/>
+    </g>
+    <g fill="#6f9455">
+      <ellipse cx="108" cy="478" rx="12" ry="5" transform="rotate(-25 108 478)"/>
+      <ellipse cx="292" cy="478" rx="12" ry="5" transform="rotate(25 292 478)"/>
+      <ellipse cx="118" cy="492" rx="10" ry="4" transform="rotate(20 118 492)"/>
+      <ellipse cx="282" cy="492" rx="10" ry="4" transform="rotate(-20 282 492)"/>
+    </g>
+    <use href="#sunflower" x="64" y="408" width="56" height="56"/>
+    <use href="#sunflower" x="106" y="424" width="48" height="48"/>
+    <use href="#sunflower" x="246" y="424" width="48" height="48"/>
+    <use href="#sunflower" x="280" y="408" width="56" height="56"/>
+    <use href="#sunflower" x="42" y="448" width="36" height="36"/>
+    <use href="#sunflower" x="322" y="448" width="36" height="36"/>
+  </svg>
+</header>
+
+<!-- ==========================================================
+     SEÇÃO 2 — O ARQUIVO DA LENA
+     ========================================================== -->
+<section class="section arquivo" id="arquivo" aria-labelledby="arquivo-title">
+  <div class="container">
+    <h2 class="title reveal" id="arquivo-title">O Arquivo da Lena</h2>
+    <div class="arquivo-card reveal">
+      <p>Esse site é uma tentativa de guardar um pouco de você. Porque uma pessoa que faz crochê, canta no coral e ainda acha tempo de cuidar de uma cidade virtual chamada 'Cidade Feliz' merece ser lembrada em cada detalhe.</p>
+    </div>
+    <div class="divider reveal" aria-hidden="true">
+      <svg viewBox="0 0 64 64"><use href="#sunflower"/></svg>
+      <svg viewBox="0 0 64 64"><use href="#sunflower"/></svg>
+      <svg viewBox="0 0 64 64"><use href="#sunflower"/></svg>
+    </div>
+  </div>
+</section>
+
+<!-- ==========================================================
+     SEÇÃO 3 — LINHA DO TEMPO COM ABAS
+     ========================================================== -->
+<section class="section timeline" id="linha-do-tempo" aria-labelledby="timeline-title">
+  <div class="container">
+    <h2 class="title reveal" id="timeline-title">Linha do Tempo</h2>
+    <div class="reveal">
+      <div class="tablist" role="tablist" aria-label="Categorias da linha do tempo" id="tablist"></div>
+      <div id="panels"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ==========================================================
+     SEÇÃO 4 — O REINO DAS 16 SURPRESAS
+     ========================================================== -->
+<section class="section reino" id="reino" aria-labelledby="reino-title">
+  <div class="sky-lanterns" id="skyLanterns" aria-hidden="true"></div>
+  <svg class="moon" viewBox="0 0 100 100" aria-hidden="true" focusable="false">
+    <circle cx="50" cy="50" r="48" fill="url(#gGlow)" opacity=".55"/>
+    <path d="M62 12A40 40 0 1 0 88 64A32 32 0 0 1 62 12Z" fill="#FFF3B0"/>
+    <path d="M30 30a4 4 0 1 0 6 6M24 56a3 3 0 1 0 5 4" fill="none" stroke="#e8d27a" stroke-width="1.500" opacity=".7"/>
+  </svg>
+  <div class="container">
+    <div class="reino-head reveal">
+      <h2 class="title" id="reino-title">16 Motivos Pelos Quais Você É Magia</h2>
+      <p class="lead">Clique em cada lanterna e descubra</p>
+      <svg class="heart-sticks" id="heartSticks" viewBox="0 0 220 200" aria-hidden="true" focusable="false"></svg>
+      <p class="counter" id="counter" aria-live="polite">Lanternas abertas: 0 de 16</p>
+    </div>
+    <ul class="lanterns" id="lanterns" aria-label="As 16 lanternas"></ul>
+  </div>
+  <svg class="cinna-corner" viewBox="0 0 100 100" aria-hidden="true" focusable="false"><use href="#cinna"/></svg>
+</section>
+
+<!-- ==========================================================
+     SEÇÃO 5 — BARBIE
+     ========================================================== -->
+<section class="section barbie" id="barbie" aria-labelledby="barbie-title">
+  <div class="glitter" id="glitter" aria-hidden="true"></div>
+  <div class="container">
+    <h2 class="title reveal" id="barbie-title">A Lena em Três Atos</h2>
+    <svg class="stage reveal" viewBox="0 0 400 440" role="img"
+         aria-label="Ilustração: silhueta glam de uma garota no tapete vermelho, com mechas vermelhas no cabelo, vestido longo e jaqueta de couro, cercada por luzes de camarim e lanternas douradas.">
+      <rect x="8" y="8" width="384" height="424" rx="26" fill="url(#gStage)" stroke="#FFD700" stroke-width="5"/>
+      <polygon points="200,14 120,372 280,372" fill="url(#gSpot)" opacity=".7"/>
+      <rect class="bulbs" x="20" y="20" width="360" height="400" rx="18" fill="none" stroke="#FFF6B8" stroke-width="10" stroke-linecap="round" stroke-dasharray="0 27"/>
+      <rect x="20" y="20" width="360" height="400" rx="18" fill="none" stroke="#FFD700" stroke-width="3" stroke-linecap="round" stroke-dasharray="0 27" opacity=".8"/>
+      <!-- lanternas -->
+      <use class="fl" href="#lantern" x="48" y="70" width="28" height="42" style="--dl:-1s"/>
+      <use class="fl" href="#lantern" x="320" y="90" width="30" height="45" style="--dl:-3s"/>
+      <use class="fl" href="#lantern" x="70" y="170" width="20" height="30" style="--dl:-2s"/>
+      <use class="fl" href="#lantern" x="312" y="190" width="22" height="33" style="--dl:-4s"/>
+      <!-- glitter -->
+      <g fill="#FFD700">
+        <path d="M120 80l3 8 8 3-8 3-3 8-3-8-8-3 8-3z"/>
+        <path d="M285 64l2.500 6 6 2.500-6 2.500-2.500 6-2.500-6-6-2.500 6-2.500z"/>
+        <path d="M95 280l2.500 6 6 2.500-6 2.500-2.500 6-2.500-6-6-2.500 6-2.500z"/>
+        <path d="M306 290l3 8 8 3-8 3-3 8-3-8-8-3 8-3z"/>
+        <circle cx="150" cy="130" r="2"/><circle cx="262" cy="150" r="2.200"/><circle cx="60" cy="230" r="1.800"/><circle cx="340" cy="250" r="2"/>
+      </g>
+      <!-- tapete vermelho -->
+      <polygon points="150,356 250,356 352,418 48,418" fill="url(#gCarpet)"/>
+      <path d="M150 356L48 418M250 356L352 418" stroke="#FFD700" stroke-width="3"/>
+      <path d="M100 386H300" stroke="#ff6b81" stroke-width="1.200" opacity=".5"/>
+      <!-- silhueta glam -->
+      <path d="M174 238H226C232 282 250 340 264 394H136C150 340 168 282 174 238Z" fill="#6B2D5C"/>
+      <path d="M206 272C213 312 224 352 238 394" fill="none" stroke="#e08ab5" stroke-width="2" opacity=".75"/>
+      <g fill="#FFD700" opacity=".85"><circle cx="190" cy="270" r="1.500"/><circle cx="182" cy="300" r="1.500"/><circle cx="170" cy="340" r="1.500"/><circle cx="222" cy="300" r="1.500"/><circle cx="234" cy="350" r="1.500"/><circle cx="196" cy="330" r="1.500"/></g>
+      <path d="M136 394H264" stroke="#FFD700" stroke-width="2"/>
+      <path d="M176 140Q200 130 224 140L246 158L252 234L236 238L230 188L228 242H172L170 188L164 238L148 234L154 158Z" fill="#14101a"/>
+      <path d="M190 136L200 172L210 136Z" fill="#6B2D5C"/>
+      <path d="M186 136L200 176L214 136M200 176V242M158 160L166 232M242 160L234 232" fill="none" stroke="#8a7a9a" stroke-width="1.800" stroke-linecap="round"/>
+      <circle cx="156" cy="238" r="6.500" fill="#3a1f4d"/>
+      <circle cx="244" cy="238" r="6.500" fill="#3a1f4d"/>
+      <rect x="194" y="120" width="12" height="20" rx="4" fill="#3a1f4d"/>
+      <path d="M178 104C170 134 168 172 176 200H224C232 172 230 134 222 104C220 80 180 80 178 104Z" fill="#24102e"/>
+      <ellipse cx="200" cy="106" rx="15" ry="18" fill="#3a1f4d"/>
+      <path d="M180 100C196 82 212 86 222 102C214 94 196 90 180 100Z" fill="#24102e"/>
+      <g fill="none" stroke="#E11D48" stroke-width="3.200" stroke-linecap="round">
+        <path d="M181 108C177 132 176 164 180 196"/><path d="M189 104C186 134 186 166 189 198"/>
+        <path d="M219 108C223 132 224 164 220 196"/><path d="M211 104C214 134 213 166 211 198"/>
+      </g>
+    </svg>
+    <div class="acts">
+      <article class="act reveal">
+        <p class="ato">Ato I</p>
+        <blockquote>“Vcs são doentes”</blockquote>
+        <time class="stamp" datetime="2026-11-09T10:12">09/11/2026 10:12</time>
+      </article>
+      <article class="act reveal">
+        <p class="ato">Ato II</p>
+        <blockquote>“Deixa eu pobre msm”</blockquote>
+        <time class="stamp" datetime="2026-03-21T23:42">21/03/2026 23:42</time>
+      </article>
+      <article class="act reveal">
+        <p class="ato">Ato III</p>
+        <blockquote>“Te jogo tomate”</blockquote>
+        <time class="stamp" datetime="2026-11-09T08:40">09/11/2026 08:40</time>
+      </article>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ==========================================================
+     SEÇÃO 6 — RODAPÉ
+     ========================================================== -->
+<footer class="footer" id="rodape">
+  <div class="container reveal">
+    <div class="divider" aria-hidden="true" style="margin:0 0 24px">
+      <svg viewBox="0 0 64 64"><use href="#sunflower"/></svg>
+      <svg viewBox="0 0 64 64"><use href="#sunflower"/></svg>
+      <svg viewBox="0 0 64 64"><use href="#sunflower"/></svg>
+    </div>
+    <p class="msg">Você merece ser lembrada em todos os detalhes.</p>
+    <p class="sign">Te admiro, Lena.</p>
+    <p class="gui">— Gui 🐢💕</p>
+  </div>
+</footer>
+
+<!-- ==========================================================
+     MODAL (único, reutilizado pelas 16 lanternas)
+     ========================================================== -->
+<div class="modal" id="modal" aria-hidden="true">
+  <div class="modal-box" id="modalBox" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-describedby="modalText" tabindex="-1">
+    <button type="button" class="modal-close" id="modalCloseX" aria-label="Fechar">&times;</button>
+    <div class="modal-ico" id="modalIcon" aria-hidden="true"></div>
+    <p class="modal-num" id="modalNum"></p>
+    <h3 class="modal-title" id="modalTitle"></h3>
+    <p class="modal-text" id="modalText"></p>
+    <span class="modal-ref" id="modalRef"></span>
+    <div class="modal-actions">
+      <button type="button" class="btn-plum" id="modalCloseBtn">Fechar lanterna</button>
+    </div>
+  </div>
+</div>
+
+<script>
+(function () {
+  'use strict';
+
+  /* ==========================================================
+     DADOS (conteúdo extraído da conversa)
+     ========================================================== */
+  var DATA = {
+    frases: [
+      ["KKKK vc gosta d kpop???", "21/03/2026 20:43"],
+      ["ELAS SÃO MT BOOOOAS", "21/03/2026 20:46", "sobre TWICE"],
+      ["eu faço icons", "21/03/2026 20:49"],
+      ["eu tô obcecada no novo álbum do bts, arirang, tá tão lindo😭😭💕💕", "21/03/2026 20:54"],
+      ["esses 4 anos de espera valeram a pena", "21/03/2026 20:54"],
+      ["eu te acho nerd, mas acho fofo pessoas nerds", "21/03/2026 23:05"],
+      ["eu sinto vergonha, pessoal julga muito", "22/03/2026 23:11"],
+      ["vim do grito de useewa da ado", "22/03/2026 23:20"],
+      ["eu gosto quando vc me conta coisas sobre vc", "31/10/2026 23:44"],
+      ["vc fala tão certinho, que inveja", "30/09/2026 19:31"],
+      ["melhor elogio q recebi nessa semana", "31/10/2026 22:45"],
+      ["que raridadeeeee vc tá lindinho", "06/11/2026 11:15"],
+      ["eu tenho problema com o sol", "21/03/2026 22:29"],
+      ["nunca fui [pontual]", "30/10/2026 08:00"],
+      ["a vida é um abacaxi", "31/10/2026 00:21"],
+      ["minha memória é menor doq um grão de arroz", "25/03/2026 15:56"]
+    ],
+    trocas: [
+      ["Fico no aguardo pra ver se essa arquitetura é tudo isso mesmo", "ih ala, tá duvidando do MEU potencial?", "31/10/2026 23:53"],
+      ["Quero descobrir se a IA é tão boa em pessoa quanto é no áudio", "palavras não valem, oq valem são ações mb", "03/11/2026 18:29"],
+      ["Você é a protagonista", "gosto de ser figurante", "10/11/2026 12:20"],
+      ["Obrigado por ter criado algo tão único com as suas mãos", "gostou??? eu fiz em sla, vinte minutos?", "09/10/2026 12:06"],
+      ["Tô farmando aura", "KKKKK farmou", "10/04/2026 17:55"],
+      ["Você é uma artista", "são só flores", "08/10/2026 13:53"],
+      ["Você é muito fácil", "EI! eu n sou fácil ok", "24/03/2026 21:57"],
+      ["Sou o melhor jogador de Pebolim", "qiss, KKKKK", "24/03/2026 23:01"],
+      ["Meu cabelo ficou melhor em casa", "é bonitinho na escola tb oxe", "10/04/2026 20:55"],
+      ["O que aconteceria se eu tivesse que cortar o cabelo?", "ia ficar diferente, pq eu já te vi de cabelo grandinho né", "21/03/2026 21:20"]
+    ],
+    girias: [
+      ["Socorro"], ["Ave"], ["Oxi"], ["Aff"], ["Nss"], ["Delícia"],
+      ["Senhorito / Senhorita"],
+      ["A certa / A errada", "ele / ela"],
+      ["Pou / Ângela / Tom"], ["Gotic girl"], ["A vida é um abacaxi"],
+      ["Te jogo tomate 🍅"], ["Quase bigode"], ["Menino do ônibus"]
+    ],
+    sonhos: [
+      ["Ir no show do BTS", "21/03/2026 23:30"],
+      ["Comprar o Samsung A17 ano que vem", "01/10/2026 20:51"],
+      ["Comprar uma pelúcia do Cinnamoroll", "23/10/2026 22:08"],
+      ["Ter um buldogue ou um salsicha esfumaçado", "21/03/2026 22:32"],
+      ["Aprender a fazer pessoas em crochê", "05/11/2026 21:17"],
+      ["Desenhar bem no computador", "01/10/2026 21:00"],
+      ["Visitar Anastácio", "02/04/2026 16:31"],
+      ["Sair do Castro e ir pra 2 de Setembro", "01/10/2026 23:54"],
+      ["Fazer o crisma", "22/04/2026 18:45"],
+      ["Tirar os sisos ano que vem", "24/04/2026 18:25"],
+      ["Fazer mechas vermelhas no cabelo", "07/04/2026 19:22"],
+    ],
+    elaSobreEle: [
+      ["vc é meu favorito da vida real, tudo bem?", "21/03/2026 23:30"],
+      ["eu te acho nerd, mas acho fofo pessoas nerds", "21/03/2026 23:05"],
+      ["eu gosto quando vc me conta coisas sobre vc", "31/10/2026 23:44"],
+      ["vc fala tão certinho, que inveja", "30/09/2026 19:31"],
+      ["melhor elogio q recebi nessa semana", "31/10/2026 22:45"],
+      ["que raridadeeeee vc tá lindinho", "06/11/2026 11:15"],
+      ["achei fofo quando vc fala 'quase bigode'", "08/04/2026 23:17"],
+      ["eu queria ter essas habilidades p fazer essas coisinhas q vc faz", "31/10/2026 23:59"],
+      ["você é o ++, eu sou a +-", "26/03/2026 20:20"]
+    ],
+    eleSobreEla: [
+      ["nós dois sabemos que eu sou o sonso e você é a certa", "20/10/2026 22:14"],
+      ["Você é uma artista", "08/10/2026 13:27"],
+      ["Isso mostra que você tem um coração enorme", "07/11/2026 10:17"],
+      ["É raro ver alguém que se entrega tanto para uma história", "07/11/2026 10:18"],
+      ["A 'certa' é trabalhadora mesmo hein", "05/11/2026 21:39"],
+      ["A senhorita presta atenção em algo relacionado a mim", "06/11/2026 19:47"],
+      ["Isso explica porque os traços são tão cheios de sentimento", "09/10/2026 12:12"],
+      ["Você desenharia outros pra eu montar uma galeria particular?", "09/10/2026 12:07"]
+    ]
+  };
+
+  var SURPRISES = [
+    { t: "O GIRASSOL DE VINTE MINUTOS", x: "Você fez um desenho de girassóis em vinte minutos numa aula do Andersen só pra eu lembrar de você. Vinte minutos. Eu guardei pra sempre, e agora ele vive nesse site também.", r: "09/10/2026 12:06" },
+    { t: "ARIRANG", x: "Você falou que esses quatro anos de espera valeram a pena, e eu ouvi cada palavra. O álbum novo do BTS é a prova de que você sente as coisas com uma intensidade que eu admiro.", r: "21/03/2026 20:54" },
+    { t: "DAHYUN E NAYEON", x: "Sua favorita é a Dahyun, e você acha a Nayeon fofa. Eu gosto da Nayeon. É o nosso primeiro desacordo registrado, e eu acho que nunca vou ganhar essa discussão.", r: "21/03/2026 20:46" },
+    { t: "JEONGIN", x: "Stray Kids é um dos seus grupos favoritos e Jeongin é seu bias. Um dia você vai no show, e eu quero estar aqui pra ouvir você contar cada detalhe.", r: "21/03/2026 23:29" },
+    { t: "A GAROTA GÓTICA", x: "Você me contou do seu privado, da estética dark, do medo de julgamento na escola. Eu queria que você soubesse que o seu jeito de ser é a coisa mais bonita que você tem.", r: "22/03/2026 23:02" },
+    { t: "O CINNAMOROLL", x: "Você quer comprar uma pelúcia do Cinnamoroll e eu já imagino você abraçada nela. É fofo demais. E é muito você.", r: "23/10/2026 22:08" },
+    { t: "A ARQUITETA", x: "Você faz casinhas no Minecraft, e eu já disse que é modéstia. Um dia você me mostra a cidade inteira, e eu vou fingir que não estou impressionado.", r: "31/10/2026 23:48" },
+    { t: "O TAPETE E O GIRASSOL", x: "Você faz crochê, tapete, girassol, e ainda quer aprender a fazer pessoas.", r: "05/11/2026 21:17" },
+    { t: "OS OVOS DE PÁSCOA", x: "Você faz ovos de páscoa pra vender, bombons e tudo. Um dia eu ainda vou provar um, e vou dizer que é o melhor que já comi — porque vai ser verdade.", r: "27/03/2026 19:54" },
+    { t: "A SOPRANO DA MATRIZ", x: "Você canta na Matriz de Nossa Senhora dos Remédios, em Ladário. Soprano. Você disse que é a voz da cabeça. Eu ouvi isso e fiquei pensando: é claro que é, é a sua voz.", r: "24/03/2026 23:08" },
+    { t: "O CRISMA", x: "Você vai fazer o crisma e está ansiosa. Fico feliz de ver você se preparando pra algo que é tão seu. Vai ser lindo.", r: "22/04/2026 18:45" },
+    { t: "NARUTO, DEATH NOTE, EVANGELION", x: "Naruto é o seu anime de conforto, Death Note você sabe as falas de cor, Evangelion é um dos seus favoritos, e Dragon Ball você está descobrindo — me pedindo pra te explicar cada detalhe. Eu adoro isso.", r: "24/03/2026 22:28" },
+    { t: "A SAGA CREPÚSCULO", x: "Você já reassistiu a saga umas cinco vezes. Você ama vampiros, romance e melancolia. E eu acho lindo você se entregar tanto pras histórias que ama.", r: "08/04/2026 22:56" },
+    { t: "MPB, METAL E BABYMETAL", x: "Sua playlist tem mais de 500 músicas misturadas: nu metal, heavy, rock psicodélico, MPB, pop, K-pop, J-pop. Slipknot, SOAD, BABYMETAL, HIM. E 'Flor de Tangerina', que você ama. Uma playlist inteira de você.", r: "25/04/2026 22:55" },
+    { t: "A VIDA É UM ABACAXI", x: "Você inventou essa metáfora: a vida não é um morango, é um abacaxi — doce, mas ácido e machuca os lábios. Eu achei a coisa mais linda que você já me disse.", r: "31/10/2026 00:21" },
+    { t: "TE JOGO TOMATE 🍅", x: "Você me joga tomate quando eu falo besteira. E eu deixo, porque é o jeito mais fofo de ser derrotado do mundo.", r: "09/11/2026 08:40" }
+  ];
+
+  /* ==========================================================
+     UTILITÁRIOS
+     ========================================================== */
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var $ = function (id) { return document.getElementById(id); };
+  var rand = function (a, b) { return a + Math.random() * (b - a); };
+
+  function h(tag, cls, text) {
+    var el = document.createElement(tag);
+    if (cls) el.className = cls;
+    if (text != null) el.textContent = text;
+    return el;
+  }
+
+  function stamp(str) {
+    var el = h('time', 'stamp', str);
+    var m = str.match(/^(\d{2})\/(\d{2})\/(\d{4})(?: (\d{2}:\d{2}))?$/);
+    if (m) el.setAttribute('datetime', m[3] + '-' + m[2] + '-' + m[1] + (m[4] ? 'T' + m[4] : ''));
+    return el;
+  }
+
+  function quote(text) { return '\u201C' + text + '\u201D'; }
+
+  function iconSvg(n) {
+    return '<svg viewBox="0 0 64 64" aria-hidden="true" focusable="false"><use href="#ic-' + n + '"/></svg>';
+  }
+
+  /* ==========================================================
+     DECORAÇÕES (estrelas, lanternas, glitter, pétalas)
+     ========================================================== */
+  function buildHeroStars() {
+    var box = $('heroStars'), html = '';
+    for (var i = 0; i < 70; i++) {
+      var s = rand(1, 3).toFixed(1);
+      html += '<span class="star" style="left:' + rand(0, 100).toFixed(1) + '%;top:' + rand(0, 62).toFixed(1) +
+        '%;width:' + s + 'px;height:' + s + 'px;--t:' + rand(2, 5).toFixed(1) + 's;--dl:-' + rand(0, 5).toFixed(1) + 's"></span>';
+    }
+    box.innerHTML = html;
+  }
+
+  function buildHeroLanterns() {
+    var box = $('heroLanterns'), html = '';
+    for (var i = 0; i < 9; i++) {
+      var w = rand(16, 30).toFixed(0);
+      html += '<svg class="amb" viewBox="0 0 40 60" style="--x:' + rand(2, 94).toFixed(1) + '%;--w:' + w + 'px;--t:' +
+        rand(14, 26).toFixed(1) + 's;--dl:-' + rand(0, 20).toFixed(1) + 's;--sx:' + rand(-40, 40).toFixed(0) + 'px;--top:' +
+        rand(8, 60).toFixed(0) + '%"><use href="#lantern" width="40" height="60"/></svg>';
+    }
+    box.innerHTML = html;
+  }
+
+  function buildSkyLanterns() {
+    var box = $('skyLanterns'), html = '';
+    for (var i = 0; i < 130; i++) {
+      var w = rand(9, 30).toFixed(0);
+      html += '<svg class="sl" viewBox="0 0 40 60" style="--x:' + rand(0, 98).toFixed(1) + '%;--y:' + rand(0, 98).toFixed(1) +
+        '%;--w:' + w + 'px;--o:' + rand(0.25, 0.85).toFixed(2) + ';--t:' + rand(5, 11).toFixed(1) + 's;--dl:-' + rand(0, 10).toFixed(1) +
+        's"><use href="#lantern" width="40" height="60"/></svg>';
+    }
+    box.innerHTML = html;
+  }
+
+  function buildGlitter() {
+    var box = $('glitter'), html = '';
+    for (var i = 0; i < 40; i++) {
+      html += '<span class="gl" style="--x:' + rand(0, 98).toFixed(1) + '%;--y:' + rand(0, 98).toFixed(1) + '%;--s:' +
+        rand(8, 20).toFixed(0) + 'px;--t:' + rand(2, 5).toFixed(1) + 's;--dl:-' + rand(0, 5).toFixed(1) + 's"></span>';
+    }
+    box.innerHTML = html;
+  }
+
+  function buildHeart() {
+    var svg = $('heartSticks'), colors = ['#FFC0CB', '#FFD700', '#ffffff', '#8fb0ff'];
+    var N = 20, cx = 110, cy = 92, k = 5.6, out = '';
+    for (var i = 0; i < N; i++) {
+      var t = (i / N) * Math.PI * 2;
+      var x = cx + 16 * Math.pow(Math.sin(t), 3) * k;
+      var y = cy - (13 * Math.cos(t) - 5 * Math.cos(2 * t) - 2 * Math.cos(3 * t) - Math.cos(4 * t)) * k;
+      var ang = Math.atan2(x - cx, -(y - cy)) * 180 / Math.PI;
+      out += '<use href="#lightstick" width="9" height="29" style="color:' + colors[i % 4] + '" transform="translate(' +
+        x.toFixed(1) + ' ' + y.toFixed(1) + ') rotate(' + ang.toFixed(1) + ') translate(-4.5 -14.5)"/>';
+    }
+    svg.innerHTML = out;
+  }
+
+  function buildPetals() {
+    if (reduceMotion) return;
+    var box = $('petals'), html = '';
+    for (var i = 0; i < 12; i++) {
+      html += '<span class="petal" style="--x:' + rand(0, 98).toFixed(1) + '%;--w:' + rand(7, 12).toFixed(0) + 'px;--t:' +
+        rand(11, 20).toFixed(1) + 's;--dl:-' + rand(0, 18).toFixed(1) + 's;--dx:' + rand(-70, 70).toFixed(0) + 'px"></span>';
+    }
+    box.innerHTML = html;
+  }
+
+  /* ==========================================================
+     HERO — botão "Entrar no Reino"
+     ========================================================== */
+  function initHero() {
+    var btn = $('enterBtn'), layer = $('launch');
+    btn.addEventListener('click', function () {
+      var target = $('arquivo');
+      if (reduceMotion) {
+        target.scrollIntoView({ behavior: 'auto' });
+        target.setAttribute('tabindex', '-1');
+        target.focus({ preventScroll: true });
+        return;
+      }
+      for (var i = 0; i < 24; i++) {
+        var el = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+        el.setAttribute('viewBox', '0 0 40 60');
+        el.setAttribute('class', 'fly');
+        var w = rand(22, 46).toFixed(0);
+        el.style.cssText = '--x:' + rand(2, 94).toFixed(1) + '%;--w:' + w + 'px;--t:' + rand(3.2, 5.6).toFixed(2) +
+          's;--dl:' + rand(0, 0.9).toFixed(2) + 's;--sx:' + rand(-60, 60).toFixed(0) + 'px';
+        el.innerHTML = '<use href="#lantern" width="40" height="60"/>';
+        el.addEventListener('animationend', function (e) { if (e.currentTarget.parentNode) e.currentTarget.parentNode.removeChild(e.currentTarget); });
+        layer.appendChild(el);
+      }
+      setTimeout(function () {
+        target.scrollIntoView({ behavior: 'smooth' });
+        target.setAttribute('tabindex', '-1');
+        target.focus({ preventScroll: true });
+      }, 1100);
+    });
+  }
+
+  /* ==========================================================
+     ABAS DA LINHA DO TEMPO
+     ========================================================== */
+  function renderQuoteGrid(items) {
+    var ul = h('ul', 'grid-q');
+    items.forEach(function (it) {
+      var li = h('li', 'q-card');
+      var p = h('p', null, quote(it[0]));
+      if (it[2]) p.appendChild(h('span', 'note', '(' + it[2] + ')'));
+      li.appendChild(p);
+      li.appendChild(stamp(it[1]));
+      ul.appendChild(li);
+    });
+    return ul;
+  }
+
+  var TABS = [
+    { id: 'frases', label: 'Frases dela', title: 'Frases dela', render: function () { return renderQuoteGrid(DATA.frases); } },
+    { id: 'trocas', label: 'Ele disse, ela reagiu', title: 'Coisas que ele disse e ela reagiu', render: function () {
+      var ul = h('ul', 'grid-q');
+      DATA.trocas.forEach(function (it) {
+        var li = h('li', 'exchange');
+        var a = h('div', 'bubble him'); a.appendChild(h('span', 'who', 'Ele disse')); a.appendChild(h('p', null, quote(it[0])));
+        var b = h('div', 'bubble her'); b.appendChild(h('span', 'who', 'Ela respondeu')); b.appendChild(h('p', null, quote(it[1])));
+        li.appendChild(a); li.appendChild(b); li.appendChild(stamp(it[2]));
+        ul.appendChild(li);
+      });
+      return ul;
+    } },
+    { id: 'girias', label: 'Gírias e códigos', title: 'Nossas gírias e códigos', render: function () {
+      var ul = h('ul', 'slang');
+      DATA.girias.forEach(function (it) {
+        var li = h('li', null, it[0]);
+        if (it[1]) li.appendChild(h('small', null, it[1]));
+        ul.appendChild(li);
+      });
+      return ul;
+    } },
+    { id: 'sonhos', label: 'Sonhos e planos', title: 'Sonhos e planos dela', render: function () {
+      var ul = h('ul', 'dreams');
+      DATA.sonhos.forEach(function (it, i) {
+        var li = h('li');
+        li.appendChild(h('span', 'num', String(i + 1)));
+        var body = h('div', 'body');
+        body.appendChild(h('p', null, it[0]));
+        body.appendChild(stamp(it[1]));
+        li.appendChild(body);
+        ul.appendChild(li);
+      });
+      return ul;
+    } },
+    { id: 'admiracao', label: 'Admiração mútua', title: 'Momentos de admiração mútua', render: function () {
+      var wrap = h('div', 'duo');
+      var c1 = h('div', 'her-col'); c1.appendChild(h('h4', null, 'Ela sobre ele')); c1.appendChild(renderQuoteGrid(DATA.elaSobreEle));
+      var c2 = h('div', 'him-col'); c2.appendChild(h('h4', null, 'Ele sobre ela')); c2.appendChild(renderQuoteGrid(DATA.eleSobreEla));
+      wrap.appendChild(c1); wrap.appendChild(c2);
+      return wrap;
+    } }
+  ];
+
+  function initTabs() {
+    var list = $('tablist'), panels = $('panels'), tabEls = [], panelEls = [];
+
+    TABS.forEach(function (t, i) {
+      var tab = h('button', 'tab', t.label);
+      tab.type = 'button';
+      tab.id = 'tab-' + t.id;
+      tab.setAttribute('role', 'tab');
+      tab.setAttribute('aria-controls', 'panel-' + t.id);
+      tab.setAttribute('aria-selected', 'false');
+      tab.tabIndex = -1;
+      list.appendChild(tab);
+      tabEls.push(tab);
+
+      var panel = h('div', 'panel');
+      panel.id = 'panel-' + t.id;
+      panel.setAttribute('role', 'tabpanel');
+      panel.setAttribute('aria-labelledby', tab.id);
+      panel.hidden = true;
+      var ttl = h('h3', 'panel-title', t.title);
+      panel.appendChild(ttl);
+      panel.appendChild(t.render());
+      panels.appendChild(panel);
+      panelEls.push(panel);
+
+      tab.addEventListener('click', function () { select(i, false); });
+      tab.addEventListener('keydown', function (e) {
+        var n = tabEls.length, idx = null;
+        if (e.key === 'ArrowRight' || e.key === 'ArrowDown') idx = (i + 1) % n;
+        else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') idx = (i - 1 + n) % n;
+        else if (e.key === 'Home') idx = 0;
+        else if (e.key === 'End') idx = n - 1;
+        if (idx !== null) { e.preventDefault(); select(idx, true); }
+      });
+    });
+
+    function select(index, focus) {
+      tabEls.forEach(function (tab, i) {
+        var on = i === index;
+        tab.setAttribute('aria-selected', on ? 'true' : 'false');
+        tab.tabIndex = on ? 0 : -1;
+        panelEls[i].hidden = !on;
+      });
+      if (focus) tabEls[index].focus();
+    }
+    select(0, false);
+  }
+
+  /* ==========================================================
+     LANTERNAS + MODAL (foco preso, ESC, clique fora, sem rolagem)
+     ========================================================== */
+  function initLanterns() {
+    var ul = $('lanterns'), counter = $('counter');
+    var modal = $('modal'), box = $('modalBox');
+    var opened = {}, openedCount = 0, lastTrigger = null, downOnBackdrop = false;
+
+    SURPRISES.forEach(function (s, i) {
+      var n = i + 1, num = (n < 10 ? '0' : '') + n;
+      var li = h('li'); li.style.setProperty('--i', String(i));
+      var btn = h('button', 'lantern-card');
+      btn.type = 'button';
+      btn.setAttribute('aria-haspopup', 'dialog');
+      btn.setAttribute('aria-label', 'Abrir lanterna ' + n + ': ' + s.t);
+      btn.innerHTML = '<span class="check" aria-hidden="true">✓</span>' +
+        '<span class="ico" aria-hidden="true">' + iconSvg(n) + '</span>' +
+        '<span class="nm" aria-hidden="true">Nº ' + num + '</span>';
+      btn.appendChild(h('span', 'tt', s.t));
+      btn.addEventListener('click', function () { openModal(i, btn); });
+      li.appendChild(btn);
+      ul.appendChild(li);
+    });
+
+    function openModal(i, trigger) {
+      var s = SURPRISES[i], n = i + 1;
+      lastTrigger = trigger;
+      $('modalIcon').innerHTML = iconSvg(n);
+      $('modalNum').textContent = 'Motivo ' + n + ' de 16';
+      $('modalTitle').textContent = s.t;
+      $('modalText').textContent = s.x;
+      $('modalRef').textContent = s.r;
+
+      var scrollbar = window.innerWidth - document.documentElement.clientWidth;
+      if (scrollbar > 0) document.body.style.paddingRight = scrollbar + 'px';
+      document.documentElement.classList.add('modal-open');
+      modal.classList.add('open');
+      modal.setAttribute('aria-hidden', 'false');
+      box.scrollTop = 0;
+      box.focus();
+
+      if (!opened[i]) {
+        opened[i] = true; openedCount++;
+        trigger.classList.add('is-opened');
+        counter.textContent = 'Lanternas abertas: ' + openedCount + ' de 16' + (openedCount === 16 ? ' — o reino inteiro acendeu ✨' : '');
+      }
+    }
+
+    function closeModal() {
+      if (!modal.classList.contains('open')) return;
+      modal.classList.remove('open');
+      modal.setAttribute('aria-hidden', 'true');
+      document.documentElement.classList.remove('modal-open');
+      document.body.style.paddingRight = '';
+      if (lastTrigger) lastTrigger.focus();
+    }
+
+    $('modalCloseX').addEventListener('click', closeModal);
+    $('modalCloseBtn').addEventListener('click', closeModal);
+    modal.addEventListener('mousedown', function (e) { downOnBackdrop = e.target === modal; });
+    modal.addEventListener('touchstart', function (e) { downOnBackdrop = e.target === modal; }, { passive: true });
+    modal.addEventListener('click', function (e) {
+      if (e.target === modal && downOnBackdrop) closeModal();
+      downOnBackdrop = false;
+    });
+
+    document.addEventListener('keydown', function (e) {
+      if (!modal.classList.contains('open')) return;
+      if (e.key === 'Escape') { e.preventDefault(); closeModal(); return; }
+      if (e.key === 'Tab') {
+        var f = box.querySelectorAll('button:not([disabled])');
+        var first = f[0], last = f[f.length - 1], active = document.activeElement;
+        if (e.shiftKey && (active === first || active === box)) { e.preventDefault(); last.focus(); }
+        else if (!e.shiftKey && active === last) { e.preventDefault(); first.focus(); }
+        else if (!box.contains(active)) { e.preventDefault(); first.focus(); }
+      }
+    });
+  }
+
+  /* ==========================================================
+     OBSERVERS (fade-in + pausar animações fora da tela)
+     ========================================================== */
+  function initObservers() {
+    var items = document.querySelectorAll('.reveal');
+    if (!('IntersectionObserver' in window)) {
+      items.forEach(function (el) { el.classList.add('is-visible'); });
+      $('reino').classList.add('in-view');
+      return;
+    }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) { en.target.classList.add('is-visible'); io.unobserve(en.target); }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    items.forEach(function (el) { io.observe(el); });
+
+    var io2 = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) { en.target.classList.toggle('in-view', en.isIntersecting); });
+    }, { threshold: 0 });
+    io2.observe($('reino'));
+  }
+
+  /* ==========================================================
+     INICIALIZAÇÃO
+     ========================================================== */
+  buildHeroStars();
+  buildHeroLanterns();
+  buildSkyLanterns();
+  buildGlitter();
+  buildHeart();
+  buildPetals();
+  initHero();
+  initTabs();
+  initLanterns();
+  initObservers();
+})();
+</script>
+</body>
+</html>
